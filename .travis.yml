@@ -9,6 +9,7 @@ services:
     - docker
 
 before_install: 
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker build -t amirftma/vue-example -f Dockerfile.prod .
 script:     
     - docker run -e CI=true wilpat/sample-app npm run test -- --coverage
