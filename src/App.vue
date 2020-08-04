@@ -1,19 +1,17 @@
 <template>
   <v-app>
-  <core-app-bar />
+    <div>
+      <core-app-bar />
+    </div>
 
-  <router-view/>
-  <core-footer />
-    
+  <div>
+    <router-view/>
+  </div>
+  
+  <Footer />
+
 
   </v-app>
-  <!-- <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div> -->
 </template>
 
 
@@ -24,7 +22,7 @@ export default {
     components: {
       // CoreCta: () => import('@/components/core/Cta'),
       // CoreDrawer: () => import('@/components/core/Drawer'),
-      CoreFooter: () => import('@/components/core/Footer'),
+      Footer: () => import('@/components/core/Footer'),
       CoreAppBar: () => import('@/components/core/AppBar'),
       // CoreView: () => import('@/components/core/View'),
     },

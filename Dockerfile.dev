@@ -1,0 +1,15 @@
+# build stage
+FROM node:14.7.0 as build-stage
+# this is my wifi interface ip and there is private npm registery running on this port
+RUN npm config set registry http://192.168.1.102:8081/repository/npm-all/
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# production stage
+FROM nginx:1.19 as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
